@@ -11,31 +11,23 @@ const Header = () => {
         </h1>
         {/* Home & About */}
         <ul className="flex ml-8">
-          <li className="px-4 py-2">
+          <li className="px-4 py-2 text-lg">
             <Link to="/">Home</Link>
           </li>
-          <li className="px-4 py-2">
-            <Link to="/about" title="About">
-              About
-            </Link>
+          <li className="px-4 py-2 text-lg">
+            <Link to="/about">About</Link>
           </li>
         </ul>
         {/* Register & Login */}
         <ul className="flex ml-auto">
-          <li className="px-4 py-2">
-            <Link to="/register" title="Register">
-              Register
-            </Link>
+          <li className="px-4 py-2 text-lg">
+            <Link to="/register">Register</Link>
           </li>
-          <li className="px-4 py-2">
-            <Link to="/login" title="Login">
-              Login
-            </Link>
+          <li className="px-4 py-2 text-lg">
+            <Link to="/login"> Login</Link>
           </li>
-          <li className="px-4 py-2">
-            <Link to="/logout" title="Logout">
-              Logout
-            </Link>
+          <li className="px-4 py-2 text-lg">
+            <Link to="/logout">Logout</Link>
           </li>
         </ul>
       </nav>
