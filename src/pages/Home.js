@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Search from "../components/Search/Search";
 import TitleWrapper from "../components/TitleWrapper/TitleWrapper";
 
 class Home extends Component {
@@ -44,6 +45,7 @@ class Home extends Component {
           </ul>
         </TitleWrapper>
         {/* Search */}
+        <Search />
         {/* Blog Posts  */}
       </>
     );
