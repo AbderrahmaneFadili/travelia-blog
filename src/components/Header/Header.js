@@ -3,45 +3,42 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header>
-      <nav>
-        {/* Logo */}
-        <h1>
+    <header className="bg-gray-900 text-white">
+      <nav className="pt-10 px-5 pb-9 items-center flex">
+        {/* Travelia Logo */}
+        <h1 className="text-4xl">
           <a href="/">Travelia</a>
         </h1>
-        <hr />
-        {/* Menu */}
-        <ul>
-          <li>
+        {/* Home & About */}
+        <ul className="flex ml-8">
+          <li className="px-4 py-2">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-4 py-2">
             <Link to="/about" title="About">
               About
             </Link>
           </li>
         </ul>
         {/* Register & Login */}
-        <ul>
-          <li>
+        <ul className="flex ml-auto">
+          <li className="px-4 py-2">
             <Link to="/register" title="Register">
               Register
             </Link>
           </li>
-          <li>
+          <li className="px-4 py-2">
             <Link to="/login" title="Login">
               Login
             </Link>
           </li>
-          <li>
+          <li className="px-4 py-2">
             <Link to="/logout" title="Logout">
               Logout
             </Link>
           </li>
         </ul>
-        <br />
       </nav>
-      <hr />
     </header>
   );
 };
