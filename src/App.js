@@ -16,6 +16,7 @@ import Login from "./pages/Login";
 import Post from "./pages/Post";
 //User profile
 import UserProfile from "./pages/UserProfile";
+import CreatePost from "./pages/CreatePost";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/post/:id" element={<Post />} />
         <Route path="/user/:id" element={<UserProfile />} />
+        <Route path="create/post" element={<CreatePost />} />
       </Routes>
       {/* Footer */}
       <Footer />

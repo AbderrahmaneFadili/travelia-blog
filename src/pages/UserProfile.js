@@ -10,7 +10,12 @@ function UserProfile() {
     <>
       {/* Title Wrapper */}
       <TitleWrapper>
+        {/* Title */}
         <h1 className="text-6xl text-center font-light">User name</h1>
+        {/* Create post */}
+        <div className="mt-10 font-light text-xl mr-3 hover:underline text-center">
+          <Link to="/create/post">Create new Post</Link>
+        </div>
         {/* links */}
         <div className="absolute bottom-7 right-7">
           <div className="self-end">
