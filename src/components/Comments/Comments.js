@@ -1,12 +1,15 @@
 import React from "react";
 import Comment from "../Comment/Comment";
+import Input from "../Input/Input";
 function Comments() {
   return (
     <>
-      <input type="text" placeholder="Add comment..." id="comment" />
-      <ul>
-        <Comment />
-      </ul>
+      <div className="max-w-screen-md mx-auto">
+        <Input placeholder="Add comment..." />
+        <ul>
+          <Comment />
+        </ul>
+      </div>
     </>
   );
 }

@@ -1,13 +1,18 @@
 import React from "react";
+import Input from "../Input/Input";
 import Reply from "../Reply/Reply";
 
 function Replies() {
   return (
     <>
-      <input type="text" placeholder="Add reply..." id="reply" />
-      <ul>
-        <Reply />
-      </ul>
+      <div className="ml-10">
+        <Input placeholder="Add Reply..." />
+        <ul>
+          <Reply />
+          <Reply />
+          <Reply />
+        </ul>
+      </div>
     </>
   );
 }
