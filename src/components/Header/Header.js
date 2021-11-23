@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -12,22 +12,32 @@ const Header = () => {
         {/* Home & About */}
         <ul className="flex ml-8">
           <li className="px-4 py-2 text-lg">
-            <Link to="/">Home</Link>
+            <NavLink activeClassName="active" to="/">
+              Home
+            </NavLink>
           </li>
           <li className="px-4 py-2 text-lg">
-            <Link to="/about">About</Link>
+            <NavLink activeClassName="active" to="/about">
+              About
+            </NavLink>
           </li>
         </ul>
         {/* Register & Login */}
         <ul className="flex ml-auto">
           <li className="px-4 py-2 text-lg">
-            <Link to="/register">Register</Link>
+            <NavLink activeClassName="active" to="/register">
+              Register
+            </NavLink>
           </li>
           <li className="px-4 py-2 text-lg">
-            <Link to="/login"> Login</Link>
+            <NavLink activeClassName="active" to="/login">
+              Login
+            </NavLink>
           </li>
           <li className="px-4 py-2 text-lg">
-            <Link to="/logout">Logout</Link>
+            <NavLink activeClassName="active" to="/logout">
+              Logout
+            </NavLink>
           </li>
         </ul>
       </nav>
