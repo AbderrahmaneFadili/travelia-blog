@@ -12,6 +12,8 @@ import About from "./pages/About";
 import Register from "./pages/Register";
 //Login
 import Login from "./pages/Login";
+//Post
+import Post from "./pages/Post";
 
 const App = () => {
   return (
@@ -24,6 +26,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/post/:id" element={<Post />} />
       </Routes>
       {/* Footer */}
       <Footer />
