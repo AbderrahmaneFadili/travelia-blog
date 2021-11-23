@@ -1,6 +1,6 @@
 import React from "react";
 
-const Select = ({ error, label, options, onChange, id }) => {
+const Select = ({ error, label, options, onChange, id, selected }) => {
   return (
     <div className="flex flex-col py-2">
       <label className="mb-2 text-xl" htmlFor={id}>
@@ -12,7 +12,9 @@ const Select = ({ error, label, options, onChange, id }) => {
         className="outline-none border-2 border-gray-900 pl-3 py-2 text-xl"
       >
         {options.map((option, i) => (
-          <option value={option.id}>{option.title}</option>
+          <option selected={selected == i} value={option.id}>
+            {option.title}
+          </option>
         ))}
       </select>
       {error && <span className={`text-lg text-red-700 py-1`}>{error}</span>}

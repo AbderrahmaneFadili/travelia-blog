@@ -16,7 +16,10 @@ import Login from "./pages/Login";
 import Post from "./pages/Post";
 //User profile
 import UserProfile from "./pages/UserProfile";
+//Create Post
 import CreatePost from "./pages/CreatePost";
+//Edit Post
+import EditPost from "./pages/EditPost";
 
 const App = () => {
   return (
@@ -32,6 +35,7 @@ const App = () => {
         <Route path="/post/:id" element={<Post />} />
         <Route path="/user/:id" element={<UserProfile />} />
         <Route path="create/post" element={<CreatePost />} />
+        <Route path="edit/post" element={<EditPost />} />
       </Routes>
       {/* Footer */}
       <Footer />
