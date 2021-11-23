@@ -13,7 +13,7 @@ function PostCard({ width }) {
       {/* post image */}
       <img
         src={card.image}
-        alt="post image"
+        alt="post"
         className="h-5/6 w-full object-cover rounded-md rounded-b-none"
       />
       <div className="flex items-center  pl-3 pt-2">
