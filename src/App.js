@@ -20,6 +20,8 @@ import UserProfile from "./pages/UserProfile";
 import CreatePost from "./pages/CreatePost";
 //Edit Post
 import EditPost from "./pages/EditPost";
+//Edit User
+import EditUser from "./pages/EditUser";
 
 const App = () => {
   return (
@@ -28,14 +30,15 @@ const App = () => {
       <Header />
       {/* Routes */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/post/:id" element={<Post />} />
-        <Route path="/user/:id" element={<UserProfile />} />
-        <Route path="create/post" element={<CreatePost />} />
-        <Route path="edit/post" element={<EditPost />} />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/post/:id" element={<Post />} />
+        <Route exact path="/user/:id" element={<UserProfile />} />
+        <Route exact path="/create/post" element={<CreatePost />} />
+        <Route exact path="/edit/post" element={<EditPost />} />
+        <Route exact path="/edit/user/:id" element={<EditUser />} />
       </Routes>
       {/* Footer */}
       <Footer />

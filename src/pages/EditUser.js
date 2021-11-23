@@ -1,29 +1,30 @@
 import React, { Component } from "react";
-import TitleWrapper from "../components/TitleWrapper/TitleWrapper";
-import Input from "../components/Input/Input";
 import Button from "../components/Button/Button";
-import { Link } from "react-router-dom";
+import Input from "../components/Input/Input";
+import TitleWrapper from "../components/TitleWrapper/TitleWrapper";
 
-class Register extends Component {
+class Home extends Component {
   render() {
     return (
       <>
+        {/* Title Wrapper */}
         <TitleWrapper>
-          <h1 className="text-6xl">Register your account</h1>
+          <h1 className="text-6xl text-center font-light">Edit your account</h1>
         </TitleWrapper>
+        {/* Edit User */}
         <div className="w-6/12 mx-auto my-10">
           <form>
             {/* Username */}
             <Input type="text" id="username" label="Username" />
             {/* Email */}
             <Input type="email" id="email" label="Email" />
-            {/* Password */}
-            <Input type="password" id="password" label="Password" />
-            {/* Password confirmation*/}
+            {/* New Password */}
+            <Input type="password" id="password" label="New password" />
+            {/* Password new confirmation*/}
             <Input
               type="password"
               id="password_confirmation"
-              label="Confirm password"
+              label="Confirm new password"
             />
             {/* Register Button*/}
             <Button
@@ -31,18 +32,12 @@ class Register extends Component {
                 marginTop: "20px",
               }}
               type="submit"
-              title="Register"
+              title="Create"
             />
           </form>
-          <p className="text-center text-xl my-3">
-            <Link to="/login" className="hover:underline">
-              I have an account
-            </Link>
-          </p>
         </div>
       </>
     );
   }
 }
-
-export default Register;
+export default Home;
