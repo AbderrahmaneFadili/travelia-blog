@@ -26,7 +26,7 @@ function CreatePost() {
       <div className="w-6/12 mx-auto my-10">
         <form>
           {/* Image  */}
-          <ImageInput id="image" />
+          <ImageInput id="image" label="Post Image" />
           {/* Title */}
           <Input type="text" id="title" label="Title" />
           {/* Body */}

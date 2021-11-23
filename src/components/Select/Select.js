@@ -8,11 +8,10 @@ const Select = ({ error, label, options, onChange, id, selected }) => {
       </label>
       <select
         id={id}
-        onChange={onChange}
         className="outline-none border-2 border-gray-900 pl-3 py-2 text-xl"
       >
         {options.map((option, i) => (
-          <option selected={selected == i} value={option.id}>
+          <option key={i.toString()} value={option.id}>
             {option.title}
           </option>
         ))}

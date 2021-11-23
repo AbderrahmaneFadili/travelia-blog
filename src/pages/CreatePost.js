@@ -4,6 +4,7 @@ import Input from "../components/Input/Input";
 import Button from "../components/Button/Button";
 import TextArea from "../components/TextArea/TextArea";
 import Select from "../components/Select/Select";
+import ImageInput from "../components/ImageInput/ImageInput";
 
 function CreatePost() {
   const [categories, setCategories] = useState([
@@ -24,7 +25,7 @@ function CreatePost() {
       <div className="w-6/12 mx-auto my-10">
         <form>
           {/* Image  */}
-          <Input type="file" id="image" label="Post Image" />
+          <ImageInput id="image" label="Post Image" />
           {/* Title */}
           <Input type="text" id="title" label="Title" />
           {/* Body */}
