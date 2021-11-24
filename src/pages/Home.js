@@ -7,6 +7,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: [],
       activeLinkStyle: "bg-gray-900 text-white",
       categories: [
         {
@@ -26,6 +27,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.state.data);
     const { categories, activeLinkStyle } = this.state;
     return (
       <>
