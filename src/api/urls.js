@@ -18,6 +18,6 @@ export const categories = `http://127.0.0.1:8000/api/categories`;
 
 /* ----- Auth : login & register & logout ------ */
 
-export const login = `http://127.0.0.1:8000/api/register`;
-export const register = `http://127.0.0.1:8000/api/logout`;
-export const logout = `http://127.0.0.1:8000/api/login`;
+export const login = `http://127.0.0.1:8000/api/login`;
+export const register = `http://127.0.0.1:8000/api/register`;
+export const logout = `http://127.0.0.1:8000/api/logout`;

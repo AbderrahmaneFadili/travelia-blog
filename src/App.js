@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 //Footer
 import Footer from "./components/Footer/Footer";
 //Header
@@ -25,7 +25,7 @@ import EditUser from "./pages/EditUser";
 
 const App = () => {
   return (
-    <Router>
+    <>
       {/* Header */}
       <Header />
       {/* Routes */}
@@ -42,7 +42,7 @@ const App = () => {
       </Routes>
       {/* Footer */}
       <Footer />
-    </Router>
+    </>
   );
 };
 
