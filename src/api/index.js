@@ -1,19 +1,20 @@
+import axios from "axios";
+
 function api() {
   return {
     //post request
-    post: (url, body, token) => {
-      return fetch(url, {
-        method: "POST",
+    post: (url, body, token = null) => {
+      return axios.post(url, body, {
         headers: {
+          "Content-Type": "application/json",
           Accept: "application/json",
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(body),
       });
     },
     //delete request
-    delete: (url, token) => {
+    delete: (url, token = null) => {
       return fetch(url, {
         method: "DELETE",
         headers: {
@@ -24,7 +25,7 @@ function api() {
       });
     },
     //put request
-    put: (url, body, token) => {
+    put: (url, body, token = null) => {
       return fetch(url, {
         method: "PUT",
         headers: {
@@ -36,7 +37,7 @@ function api() {
       });
     },
     //get request
-    get: (url, token) => {
+    get: (url, token = null) => {
       return fetch(url, {
         method: "GET",
         headers: {

@@ -7,7 +7,7 @@ import {
 //api
 import api from "../../../api";
 //register url
-import register from "../actions";
+import { registerUrl } from "../../../api/urls";
 
 //Register Begin
 function registerActionBegin() {
@@ -34,13 +34,18 @@ function registerActionFailure(payload) {
 
 //Register Action
 function registerAction(user) {
+  console.log("registerAction : ", user);
   return (dispatch) => {
     dispatch(registerActionBegin());
     api()
-      .post(register, user)
-      .then((response) => response.json())
-      .then((data) => dispatch(registerActionSuccess(data)))
-      .catch((error) => dispatch(registerActionFailure(error)));
+      .post(registerUrl, user)
+      .then((data) => {
+        localStorage.setItem("user-data", JSON.stringify(data.data));
+        dispatch(registerActionSuccess(data.data));
+      })
+      .catch((error) => {
+        dispatch(registerActionFailure(error.response.data.errors));
+      });
   };
 }
 

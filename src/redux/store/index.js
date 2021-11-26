@@ -1,6 +1,4 @@
 import registerReducer from "./reducers/registerReducer";
 
-//export all reducer
-export default {
-  registerReducer,
-};
+//export all reducer into rootReducer
+export { registerReducer };

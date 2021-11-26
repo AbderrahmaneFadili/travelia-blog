@@ -10,7 +10,7 @@ const initialState = {
   error: {},
 };
 
-export default (state = initialState, { type, payload }) => {
+const registerReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case REGISTER_USER_BEGIN:
       return { ...state, user: {}, loading: true, error: {} };
@@ -22,3 +22,4 @@ export default (state = initialState, { type, payload }) => {
       return state;
   }
 };
+export default registerReducer;
