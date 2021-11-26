@@ -34,7 +34,6 @@ function registerActionFailure(payload) {
 
 //Register Action
 function registerAction(user) {
-  console.log("registerAction : ", user);
   return (dispatch) => {
     dispatch(registerActionBegin());
     api()
