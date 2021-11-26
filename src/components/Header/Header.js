@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    if (localStorage.getItem("user-data")) {
+      const userData = JSON.parse(localStorage.getItem("user-data"));
+      setUserData(userData);
+    }
+  }, []);
+
   return (
     <header className="bg-gray-900 text-white">
       <nav className="pt-10 px-5 pb-9 items-center flex">
@@ -24,21 +33,36 @@ const Header = () => {
         </ul>
         {/* Register & Login */}
         <ul className="flex ml-auto">
-          <li className="px-4 py-2 text-lg">
-            <NavLink activeClassName="active" to="/register">
-              Register
-            </NavLink>
-          </li>
-          <li className="px-4 py-2 text-lg">
-            <NavLink activeClassName="active" to="/login">
-              Login
-            </NavLink>
-          </li>
-          <li className="px-4 py-2 text-lg">
-            <NavLink activeClassName="active" to="/logout">
-              Logout
-            </NavLink>
-          </li>
+          {userData ? (
+            <>
+              <li className="px-4 py-2 text-lg">
+                <NavLink
+                  activeClassName="active"
+                  to={"/user/" + userData.user.id}
+                >
+                  {userData.user.name}
+                </NavLink>
+              </li>
+              <li className="px-4 py-2 text-lg">
+                <NavLink activeClassName="active" to="/logout">
+                  Logout
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="px-4 py-2 text-lg">
+                <NavLink activeClassName="active" to="/register">
+                  Register
+                </NavLink>
+              </li>
+              <li className="px-4 py-2 text-lg">
+                <NavLink activeClassName="active" to="/login">
+                  Login
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>
