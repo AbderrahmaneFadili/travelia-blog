@@ -38,7 +38,7 @@ function api() {
     },
     //get request
     get: (url, token = null) => {
-      return fetch(url, {
+      return axios.get(url, {
         method: "GET",
         headers: {
           Accept: "application/json",

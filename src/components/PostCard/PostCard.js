@@ -4,20 +4,14 @@ import { FaRegComment } from "react-icons/fa";
 import { GrEdit } from "react-icons/gr";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-function PostCard() {
-  const card = {
-    image:
-      "https://images.pexels.com/photos/848573/pexels-photo-848573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    title: "This is the title !!.",
-  };
-
+function PostCard({ postTitle, postImage }) {
   return (
     <div className={`rounded-md shadow-md pb-2`}>
       {/* post image */}
       <img
-        src={card.image}
+        src={postImage}
         alt="post"
-        className="h-5/6 w-full object-cover rounded-md rounded-b-none"
+        className="h-80 w-full object-cover rounded-md rounded-b-none"
       />
       <div className="flex items-center  pl-3 pt-2">
         {/* like & comment */}
@@ -38,7 +32,7 @@ function PostCard() {
 
       {/* post title */}
       <h3 className="text-2xl leading-7 pl-3 pt-1 pb-1">
-        <a href="/">{card.title}</a>
+        <a href="/">{postTitle}</a>
       </h3>
     </div>
   );
