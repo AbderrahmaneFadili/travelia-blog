@@ -14,7 +14,7 @@ export const repliesUrl = `http://127.0.0.1:8000/api/replies/`;
 export const likesUrl = `http://127.0.0.1:8000/api/likes/`;
 
 /* ------ Categories Urls ------- */
-export const categories = `http://127.0.0.1:8000/api/categories`;
+export const categoriesUrl = `http://127.0.0.1:8000/api/categories`;
 
 /* ----- Auth : login & register & logout ------ */
 

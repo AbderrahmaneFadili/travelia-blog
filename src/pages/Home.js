@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Navigate } from "react-router";
 import PostCard from "../components/PostCard/PostCard";
 import Search from "../components/Search/Search";
 import TitleWrapper from "../components/TitleWrapper/TitleWrapper";
 import { getAllPostsAction } from "../redux/store/actions/allPostsActions";
+import { getAllCategoriesAction } from "../redux/store/actions/allCategoriesActions";
 import { MDBSpinner } from "mdb-react-ui-kit";
 
 class Home extends Component {
@@ -12,26 +12,12 @@ class Home extends Component {
     super(props);
     this.state = {
       activeLinkStyle: "bg-gray-900 text-white",
-      currentUserData: null,
-      categories: [
-        {
-          id: 1,
-          title: "Air travel",
-        },
-        {
-          id: 2,
-          title: "Bleisure travel",
-        },
-        {
-          id: 3,
-          title: "Honeymoon",
-        },
-      ],
     };
   }
 
   componentDidMount() {
     this.props.getAllPosts(4, 1);
+    this.props.getAllCategories();
   }
 
   handleLinkClick = (index) => {
@@ -40,7 +26,7 @@ class Home extends Component {
 
   render() {
     console.log(this.props);
-    const { categories, activeLinkStyle } = this.state;
+    const { activeLinkStyle } = this.state;
 
     return (
       <>
@@ -54,21 +40,24 @@ class Home extends Component {
             Blog Categories
           </h3>
           <ul className="flex w-72 justify-between mx-auto">
-            {categories.map((c) => (
-              <li key={c.id}>
-                <button className="cursor-pointer text-xl">{c.title}</button>
-              </li>
-            ))}
+            {this.props.categories &&
+              this.props.categories.map((c) => (
+                <li key={c.id}>
+                  <button className="cursor-pointer text-xl">{c.title}</button>
+                </li>
+              ))}
           </ul>
         </TitleWrapper>
         {/* Search */}
         <Search />
         {/* Blog Posts  */}
+        {/* loading */}
         {this.props.loading && (
           <div className="flex items-center justify-center h-screen">
             <MDBSpinner />
           </div>
         )}
+        {/* Posts */}
         <div className="grid grid-cols-2 gap-6 mb-6 max-w-screen-md mx-auto">
           {this.props.posts &&
             this.props.posts.data.map((post, i) => {
@@ -90,6 +79,7 @@ class Home extends Component {
               </span>
             </div>
 
+            {/* links */}
             <div className="flex text-xl border">
               {this.props.posts &&
                 this.props.posts.links.map((link, i) => {
@@ -100,7 +90,7 @@ class Home extends Component {
                       }
                       href="#"
                       className={`py-3 px-4 border-l border-r ${
-                        link.active && this.state.activeLinkStyle
+                        link.active && activeLinkStyle
                       }`}
                     >
                       {i === 0
@@ -119,17 +109,19 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps({ getAllPostsReducer }) {
+function mapStateToProps({ getAllPostsReducer, getAllCategoriesReducer }) {
   return {
     loading: getAllPostsReducer.loading,
     posts: getAllPostsReducer.posts,
     error: getAllPostsReducer.error,
+    categories: getAllCategoriesReducer.categories,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     getAllPosts: (perPage, page) => dispatch(getAllPostsAction(perPage, page)),
+    getAllCategories: () => dispatch(getAllCategoriesAction()),
   };
 }
 

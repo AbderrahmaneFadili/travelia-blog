@@ -6,6 +6,7 @@ import {
   logoutReducer,
   currentUserReducer,
   getAllPostsReducer,
+  getAllCategoriesReducer,
 } from "./store";
 
 //create the stroe with root reducer
@@ -16,6 +17,7 @@ const rootStore = createStore(
     logoutReducer,
     currentUserReducer,
     getAllPostsReducer,
+    getAllCategoriesReducer,
   }),
   applyMiddleware(thunk),
 );
