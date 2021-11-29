@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Navigate } from "react-router";
 import PostCard from "../components/PostCard/PostCard";
 import Search from "../components/Search/Search";
 import TitleWrapper from "../components/TitleWrapper/TitleWrapper";
@@ -9,6 +10,7 @@ class Home extends Component {
     this.state = {
       data: [],
       activeLinkStyle: "bg-gray-900 text-white",
+      currentUserData: null,
       categories: [
         {
           id: 1,
@@ -28,7 +30,8 @@ class Home extends Component {
 
   render() {
     console.log(this.state.data);
-    const { categories, activeLinkStyle } = this.state;
+    const { categories, activeLinkStyle, currentUserData } = this.state;
+
     return (
       <>
         {/* Title Wrapper */}

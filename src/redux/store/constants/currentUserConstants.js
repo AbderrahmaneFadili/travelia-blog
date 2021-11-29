@@ -1,0 +1,8 @@
+/* Current User Begin */
+export const GET_CURRENT_USER_BEGIN = "CURRENT_USER_BEGIN";
+/* Current User Success */
+export const GET_CURRENT_USER_SUCCESS = "CURRENT_USER_SUCCESS";
+/* Current User Failure */
+export const GET_CURRENT_USER_FAILURE = "CURRENT_USER_FAILURE";
+/* RESET CURRENT USER STATE */
+export const RESET_CURRENT_USER_STATE = "RESET_CURRENT_USER_STATE";

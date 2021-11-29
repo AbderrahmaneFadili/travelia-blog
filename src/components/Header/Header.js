@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import {
+  getCurrentUserAction,
+  resetCurrentUserState,
+} from "../../redux/store/actions/currentUserActions";
+import logoutAction from "../../redux/store/actions/logoutActions";
 
 const Header = () => {
   const [userData, setUserData] = useState(null);
 
-  useEffect(() => {
-    if (localStorage.getItem("user-data")) {
-      const userData = JSON.parse(localStorage.getItem("user-data"));
-      setUserData(userData);
-    }
-  }, []);
+  //connect redux state
+  const state = useSelector((state) => {
+    return {
+      loading: state.logoutReducer.loading,
+      error: state.logoutReducer.error,
+      messgae: state.logoutReducer.message,
+      currentUser: state.currentUserReducer.currentUser,
+    };
+  });
+
+  //connect dispatch
+  const dispatch = useDispatch();
+
+  console.log("Header state:", state);
 
   return (
     <header className="bg-gray-900 text-white">
@@ -33,20 +47,26 @@ const Header = () => {
         </ul>
         {/* Register & Login */}
         <ul className="flex ml-auto">
-          {userData ? (
+          {state.currentUser !== null ? (
             <>
               <li className="px-4 py-2 text-lg">
                 <NavLink
                   activeClassName="active"
-                  to={"/user/" + userData.user.id}
+                  to={"/user/" + state.currentUser.user.id}
                 >
-                  {userData.user.name}
+                  {state.currentUser.user.name}
                 </NavLink>
               </li>
               <li className="px-4 py-2 text-lg">
-                <NavLink activeClassName="active" to="/logout">
+                <button
+                  onClick={() => {
+                    dispatch(resetCurrentUserState());
+                    dispatch(logoutAction());
+                  }}
+                  activeClassName="active"
+                >
                   Logout
-                </NavLink>
+                </button>
               </li>
             </>
           ) : (

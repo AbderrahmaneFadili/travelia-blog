@@ -48,6 +48,7 @@ class Register extends Component {
     const { name, email, password } = this.props.error;
 
     console.log(this.props);
+
     if (this.props.user) {
       return <Navigate to="/" />;
     } else {

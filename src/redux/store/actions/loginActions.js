@@ -6,6 +6,7 @@ import {
 //api
 import api from "../../../api";
 import { loginUrl } from "../../../api/urls";
+import { getCurrentUserAction } from "./currentUserActions";
 
 //login Begin
 function loginActionBegin() {
@@ -39,6 +40,7 @@ function loginAction(user) {
       .then((data) => {
         localStorage.setItem("user-data", JSON.stringify(data.data));
         dispatch(loginActionSuccess(data.data));
+        dispatch(getCurrentUserAction());
       })
       .catch((error) => {
         dispatch(loginActionFailure(error.response.data));

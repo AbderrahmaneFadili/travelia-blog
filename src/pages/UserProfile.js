@@ -5,6 +5,7 @@ import Search from "../components/Search/Search";
 import TitleWrapper from "../components/TitleWrapper/TitleWrapper";
 import ModalMessage from "../components/Modal/ModalMessage";
 import { Component } from "react";
+import { Navigate } from "react-router-dom";
 
 class UserProfile extends Component {
   constructor(props) {
