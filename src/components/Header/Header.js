@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import {
-  getCurrentUserAction,
-  resetCurrentUserState,
-} from "../../redux/store/actions/currentUserActions";
+import { NavLink, useNavigate } from "react-router-dom";
+import { resetCurrentUserState } from "../../redux/store/actions/currentUserActions";
 import logoutAction from "../../redux/store/actions/logoutActions";
 
 const Header = () => {
   const [userData, setUserData] = useState(null);
+
+  const navigate = useNavigate();
 
   //connect redux state
   const state = useSelector((state) => {
@@ -62,6 +61,7 @@ const Header = () => {
                   onClick={() => {
                     dispatch(resetCurrentUserState());
                     dispatch(logoutAction());
+                    navigate("/login");
                   }}
                   activeClassName="active"
                 >

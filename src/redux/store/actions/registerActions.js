@@ -3,6 +3,7 @@ import {
   REGISTER_USER_FAILURE,
   REGISTER_USER_BEGIN,
 } from "../constants/registerConstants";
+import { getCurrentUserAction } from "./currentUserActions";
 
 //api
 import api from "../../../api";
@@ -41,6 +42,7 @@ function registerAction(user) {
       .then((data) => {
         localStorage.setItem("user-data", JSON.stringify(data.data));
         dispatch(registerActionSuccess(data.data));
+        dispatch(getCurrentUserAction());
       })
       .catch((error) => {
         dispatch(registerActionFailure(error.response.data.errors));

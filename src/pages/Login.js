@@ -31,7 +31,7 @@ class Login extends Component {
   render() {
     console.log(this.props);
 
-    if (this.props.user) {
+    if (this.props.currentUser) {
       return <Navigate to="/" />;
     } else {
       return (
@@ -88,13 +88,14 @@ class Login extends Component {
 }
 
 //map state to props
-const mapStateToProps = ({ loginReducer }) => {
+const mapStateToProps = ({ loginReducer, currentUserReducer }) => {
   return {
     loading: loginReducer.loading,
     error: loginReducer.error,
-    user: loginReducer.user,
+    currentUser: currentUserReducer.currentUser,
   };
 };
+
 //map dispatch to props
 const mapDispatchToProps = (dispatch) => ({
   loginUser: (user) => dispatch(loginAction(user)),

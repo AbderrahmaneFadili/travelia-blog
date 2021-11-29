@@ -49,7 +49,7 @@ class Register extends Component {
 
     console.log(this.props);
 
-    if (this.props.user) {
+    if (this.props.currentUser) {
       return <Navigate to="/" />;
     } else {
       return (
@@ -111,10 +111,10 @@ class Register extends Component {
   }
 }
 
-const mapStateToProps = ({ registerReducer }) => {
+const mapStateToProps = ({ registerReducer, currentUserReducer }) => {
   return {
     loading: registerReducer.loading,
-    user: registerReducer.user,
+    currentUser: currentUserReducer.currentUser,
     error: registerReducer.error,
   };
 };
