@@ -13,7 +13,7 @@ const initialState = {
   error: null,
 };
 
-export default (state = initialState, { type, payload }) => {
+export default function (state = initialState, { type, payload }) {
   switch (type) {
     case SEARCH_POSTS_BEGIN:
       return {
@@ -45,4 +45,4 @@ export default (state = initialState, { type, payload }) => {
     default:
       return state;
   }
-};
+}

@@ -8,7 +8,6 @@ function api() {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });

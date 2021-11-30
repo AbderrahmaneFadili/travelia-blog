@@ -10,7 +10,7 @@ const initialState = {
   error: null,
 };
 
-export default (state = initialState, { type, payload }) => {
+export default function (state = initialState, { type, payload }) {
   switch (type) {
     case LOGOUT_USER_BEGIN:
       return { ...state, message: null, loading: true, error: {} };
@@ -21,4 +21,4 @@ export default (state = initialState, { type, payload }) => {
     default:
       return state;
   }
-};
+}

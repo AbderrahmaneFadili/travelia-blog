@@ -11,7 +11,7 @@ const initialState = {
   error: null,
 };
 
-export default (state = initialState, { type, payload }) => {
+export default function (state = initialState, { type, payload }) {
   switch (type) {
     //begin
     case GET_CURRENT_USER_BEGIN:
@@ -38,4 +38,4 @@ export default (state = initialState, { type, payload }) => {
     default:
       return state;
   }
-};
+}

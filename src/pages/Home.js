@@ -15,7 +15,7 @@ class Home extends Component {
     super(props);
     this.state = {
       activeLinkStyle: "bg-gray-900 text-white",
-      searchValue: null,
+      searchValue: "",
     };
   }
 
@@ -26,7 +26,7 @@ class Home extends Component {
 
   //handle pagination link click
   handleLinkClick = (index) => {
-    if (this.state.searchValue !== null) {
+    if (this.state.searchValue !== "") {
       this.props.searchPosts(4, index, this.state.searchValue);
     } else {
       this.props.getAllPosts(4, index);
@@ -59,9 +59,11 @@ class Home extends Component {
           </h3>
           <ul className="flex w-72 justify-between mx-auto">
             {this.props.categories &&
-              this.props.categories.map((c) => (
-                <li key={c.id}>
-                  <button className="cursor-pointer text-xl">{c.title}</button>
+              this.props.categories.map((category, i) => (
+                <li key={i.toString()}>
+                  <button className="cursor-pointer text-xl">
+                    {category.title}
+                  </button>
                 </li>
               ))}
           </ul>
@@ -83,7 +85,11 @@ class Home extends Component {
           {this.props.posts &&
             this.props.posts.data.map((post, i) => {
               return (
-                <PostCard postTitle={post.title} postImage={post.image_path} />
+                <PostCard
+                  key={i.toString()}
+                  postTitle={post.title}
+                  postImage={post.image_path}
+                />
               );
             })}
         </div>
@@ -107,6 +113,7 @@ class Home extends Component {
                 this.props.posts.links.map((link, i) => {
                   return (
                     <a
+                      key={i.toString()}
                       onClick={() =>
                         this.handleLinkClick(link.url && link.url.slice(-1))
                       }

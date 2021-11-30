@@ -1,20 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import TitleWrapper from "../components/TitleWrapper/TitleWrapper";
 import Input from "../components/Input/Input";
 import Button from "../components/Button/Button";
 import TextArea from "../components/TextArea/TextArea";
 import Select from "../components/Select/Select";
 import ImageInput from "../components/ImageInput/ImageInput";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { getAllCategoriesAction } from "../redux/store/actions/allCategoriesActions";
 
 function CreatePost() {
-  const [categories, setCategories] = useState([
-    {
-      id: 1,
-      title: "Categorie 1",
-    },
-    { id: 2, title: "Categorie 2" },
-    { id: 3, title: "Categorie 3" },
-  ]);
+  const state = useSelector((state) => ({
+    categories: state.getAllCategoriesReducer.categories,
+  }));
+
+  const dispatch = useDispatch();
+
+  //get all categories
+  useEffect(() => {
+    dispatch(getAllCategoriesAction());
+  }, []);
+
   return (
     <>
       {/* Title Wrapper */}
@@ -31,7 +37,11 @@ function CreatePost() {
           {/* Body */}
           <TextArea id="body" label="Body" />
           {/* Categories */}
-          <Select options={categories} id="categories" label="Categories" />
+          <Select
+            options={state.categories}
+            id="categories"
+            label="Categories"
+          />
           {/* Register Button*/}
           <Button
             style={{

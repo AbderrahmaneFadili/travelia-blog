@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { resetCurrentUserState } from "../../redux/store/actions/currentUserActions";
 import logoutAction from "../../redux/store/actions/logoutActions";
 
 const Header = () => {
-  const [userData, setUserData] = useState(null);
-
   const navigate = useNavigate();
 
   //connect redux state
@@ -21,8 +19,6 @@ const Header = () => {
 
   //connect dispatch
   const dispatch = useDispatch();
-
-  console.log("Header state:", state);
 
   return (
     <header className="bg-gray-900 text-white">
@@ -59,8 +55,11 @@ const Header = () => {
               <li className="px-4 py-2 text-lg">
                 <button
                   onClick={() => {
+                    //reset the current user state
                     dispatch(resetCurrentUserState());
+                    //logout action
                     dispatch(logoutAction());
+                    //redirect to /login
                     navigate("/login");
                   }}
                   activeClassName="active"
