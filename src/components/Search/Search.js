@@ -6,6 +6,8 @@ class Search extends Component {
       <div className="py-12">
         <div className="mx-auto w-96">
           <input
+            onChange={this.props.onChange}
+            value={this.props.searchValue}
             type="text"
             name="search"
             id="search"

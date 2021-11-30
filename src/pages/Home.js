@@ -3,7 +3,10 @@ import { connect } from "react-redux";
 import PostCard from "../components/PostCard/PostCard";
 import Search from "../components/Search/Search";
 import TitleWrapper from "../components/TitleWrapper/TitleWrapper";
-import { getAllPostsAction } from "../redux/store/actions/allPostsActions";
+import {
+  getAllPostsAction,
+  searchPostsAction,
+} from "../redux/store/actions/allPostsActions";
 import { getAllCategoriesAction } from "../redux/store/actions/allCategoriesActions";
 import { MDBSpinner } from "mdb-react-ui-kit";
 
@@ -12,6 +15,7 @@ class Home extends Component {
     super(props);
     this.state = {
       activeLinkStyle: "bg-gray-900 text-white",
+      searchValue: null,
     };
   }
 
@@ -20,8 +24,22 @@ class Home extends Component {
     this.props.getAllCategories();
   }
 
+  //handle pagination link click
   handleLinkClick = (index) => {
-    this.props.getAllPosts(4, index);
+    if (this.state.searchValue !== null) {
+      this.props.searchPosts(4, index, this.state.searchValue);
+    } else {
+      this.props.getAllPosts(4, index);
+    }
+  };
+
+  handleSearchValueChange = (event) => {
+    this.setState(
+      {
+        searchValue: event.target.value,
+      },
+      () => this.props.searchPosts(4, 1, this.state.searchValue),
+    );
   };
 
   render() {
@@ -49,7 +67,10 @@ class Home extends Component {
           </ul>
         </TitleWrapper>
         {/* Search */}
-        <Search />
+        <Search
+          searchValue={this.state.searchValue}
+          onChange={this.handleSearchValueChange}
+        />
         {/* Blog Posts  */}
         {/* loading */}
         {this.props.loading && (
@@ -71,7 +92,8 @@ class Home extends Component {
             <div className="text-xl font-extralight">
               Showing{" "}
               <span className="font-normal">
-                {this.props.posts && this.props.posts.data.length}
+                {this.props.posts &&
+                  this.props.posts.data.length * this.props.posts.current_page}
               </span>{" "}
               of{" "}
               <span className="font-normal">
@@ -122,6 +144,8 @@ function mapDispatchToProps(dispatch) {
   return {
     getAllPosts: (perPage, page) => dispatch(getAllPostsAction(perPage, page)),
     getAllCategories: () => dispatch(getAllCategoriesAction()),
+    searchPosts: (perPage, page, search) =>
+      dispatch(searchPostsAction(perPage, page, search)),
   };
 }
 

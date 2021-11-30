@@ -1,5 +1,6 @@
 /* -----  Posts Urls ------ */
 export const postsUrl = `http://127.0.0.1:8000/api/posts/all`;
+export const searchPostsUrl = `http://127.0.0.1:8000/api/posts/`;
 
 /* ---- Comments Urls ---- */
 export const commentUrl = `http://127.0.0.1:8000/api/posts/comment/`;
